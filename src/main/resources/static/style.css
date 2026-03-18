@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #0f2027;
+    color: white;
+}
+
+/* 🔥 Animated Background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    animation: bgMove 10s linear infinite;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+@keyframes bgMove {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(-25%, -25%); }
+    100% { transform: translate(0,0); }
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+header h1 {
+    font-size: 50px;
+}
+
+header p {
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+/* BUTTON (GLOBAL CLEAN) */
+.btn, button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #00c6ff;
+    color: black;
+    border-radius: 25px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn:hover, button:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* SKILLS */
+.skills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.skill {
+    background: #00c6ff;
+    color: black;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.skill:hover {
+    transform: scale(1.1);
+    background: white;
+}
+
+/* PROJECT GRID */
+.project-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    width: 280px;
+    border-radius: 15px;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: rgba(255,255,255,0.2);
+}
+
+/* CONTACT SECTION */
+#contact {
+    padding: 80px 20px;
+}
+
+#contact h2 {
+    margin-bottom: 20px;
+}
+
+/* FORM CENTER */
+form {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+/* INPUTS */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+/* TEXTAREA */
+textarea {
+    height: 110px;
+}
+
+/* EMAIL TEXT */
+#contact p {
+    margin-top: 15px;
+    opacity: 0.8;
+}
+
+/* SUCCESS MESSAGE */
+.success {
+    display: none;
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+}
