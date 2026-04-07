@@ -1,23 +1,36 @@
 package com.sneha.contactform;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class ContactController {
 
+    @Autowired
+    private ContactRepository repo;
+
     @PostMapping("/contact")
-    public String handleContact(
+    public String save(
             @RequestParam String name,
             @RequestParam String email,
             @RequestParam String message) {
 
-        System.out.println("===== NEW CONTACT FORM SUBMISSION =====");
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-        System.out.println("Message: " + message);
-        System.out.println("=======================================");
+        Contact c = new Contact();
+        c.setName(name);
+        c.setEmail(email);
+        c.setMessage(message);
 
-        return "redirect:/?success=true";
+        repo.save(c);
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/contacts")
+    @ResponseBody
+    public List<Contact> getAll() {
+        return repo.findAll();
     }
 }

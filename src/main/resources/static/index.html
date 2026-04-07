@@ -2,99 +2,69 @@
 <html>
 <head>
     <title>Sneha | Full Stack Developer</title>
-    <link rel="stylesheet" href="style.css">
 
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <header>
-    <h1>Sneha 👩‍💻</h1>
-    <p>B.Tech CSE (IoT & CS) | Full Stack Developer</p>
-    <p>Java | Spring Boot | Power BI | IoT</p>
-    <a href="#contact" class="btn">Contact</a>
+    <h1> Sneha 👩‍💻</h1>
+    <p>Full Stack Developer | Java + Spring Boot</p>
 </header>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        Passionate developer building real-time systems, data dashboards, 
-        and scalable web applications.
-    </p>
-</section>
+<section class="glass">
+    <h2>📬 Contact Me</h2>
 
-<section>
-    <h2>Skills</h2>
-    <div class="skills">
-        <div class="skill">Java</div>
-        <div class="skill">Spring Boot</div>
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
-        <div class="skill">SQL</div>
-        <div class="skill">Power BI</div>
-        <div class="skill">Firebase</div>
-        <div class="skill">GitHub</div>
-    </div>
-</section>
-
-<!--  PROJECT GRID -->
-<section>
-    <h2>Projects</h2>
-
-    <div class="project-grid">
-
-        <div class="card">
-            <h3>Supply Chain Dashboard</h3>
-            <p>Improved decision-making by 40% using Power BI</p>
-        </div>
-
-        <div class="card">
-            <h3>Smart IoT Agriculture</h3>
-            <p>Real-time monitoring system using Firebase & sensors</p>
-        </div>
-
-        <div class="card">
-            <h3>Full Stack Contact Form</h3>
-            <p>Spring Boot integrated landing page</p>
-        </div>
-
-    </div>
-</section>
-
-<!--  CONTACT FORM -->
-<section id="contact">
-    <h2>Contact Form</h2>
-
-    <div id="success-msg" class="success">
-        ✅ Message sent successfully!
-    </div>
-
-    <form action="/contact" method="post" onsubmit="loading()">
-
+    <form action="/contact" method="post">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message"></textarea>
-
-        <button id="btn">Send Message</button>
+        <button>Submit</button>
     </form>
-
-    <p>Email: snehakri0206@gmail.com</p>
-
 </section>
 
-<footer>
-    <p>© 2026 Sneha | Future Software Engineer 🚀</p>
-</footer>
+<section>
+    <h2>📊 Live Data Dashboard</h2>
+
+    <button onclick="loadData()">Fetch Data</button>
+
+    <div class="table-box">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</section>
 
 <script>
-    function loading() {
-        document.getElementById("btn").innerText = "Sending...";
-    }
+function loadData() {
+    fetch('/contacts')
+    .then(res => res.json())
+    .then(data => {
+        let table = document.querySelector("tbody");
+        table.innerHTML = "";
 
-    if (window.location.search.includes("success=true")) {
-        document.getElementById("success-msg").style.display = "block";
-    }
+        data.forEach(d => {
+            table.innerHTML += `
+                <tr>
+                    <td>${d.id}</td>
+                    <td>${d.name}</td>
+                    <td>${d.email}</td>
+                    <td>${d.message}</td>
+                </tr>
+            `;
+        });
+    });
+}
 </script>
 
 </body>
